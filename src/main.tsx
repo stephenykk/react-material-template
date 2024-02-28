@@ -1,32 +1,36 @@
-import React, { Suspense } from 'react'
-import ReactDOM from 'react-dom/client'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import store from '@/store'
 
-import '@/styles/index.scss'
-import 'virtual:svg-icons-register'
+// scroll bar
+import 'simplebar/src/simplebar.css'
 
-import App from './App.tsx'
-import { Loading } from '@/components/Loading.tsx'
+// third-party
+import { Provider as ReduxProvider } from 'react-redux'
 
-const { DEV: isDev } = import.meta.env
+// apex-chart
+import './assets/third-party/apex-chart.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root')!)
+// project import
+import App from './App'
+import { store } from '@/store'
+import reportWebVitals from './reportWebVitals'
 
-// eslint-disable-next-line react-refresh/only-export-components
-const StrictMode = isDev
-  ? (props: any) => <>{props.children}</>
-  : React.StrictMode
+// ==============================|| MAIN - REACT DOM RENDER  ||============================== //
 
+const container = document.getElementById('root')
+const root = createRoot(container) // createRoot(container!) if you use TypeScript
 root.render(
   <StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Suspense fallback={<Loading isCenter={true} />}>
-          <App />
-        </Suspense>
+    <ReduxProvider store={store}>
+      <BrowserRouter basename="/">
+        <App />
       </BrowserRouter>
-    </Provider>
+    </ReduxProvider>
   </StrictMode>,
 )
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals()

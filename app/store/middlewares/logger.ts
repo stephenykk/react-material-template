@@ -1,6 +1,6 @@
 import { createLogger } from '@/utils/logger'
 
-const logger = createLogger('store')
+const logger = createLogger('@/store')
 
 const loggerMiddleware =
   (store: { getState: () => any }) =>

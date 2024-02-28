@@ -1,11 +1,16 @@
-import RouteList from '@/routes'
+// project import
+import Routes from '@/routes'
+import ThemeCustomization from '@/themes'
+import ScrollTop from '@/components/ScrollTop'
 
-function App() {
-  return (
-    <div className="app">
-      <RouteList />
-    </div>
-  )
-}
+// ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //
+
+const App = () => (
+  <ThemeCustomization>
+    <ScrollTop>
+      <Routes />
+    </ScrollTop>
+  </ThemeCustomization>
+)
 
 export default App

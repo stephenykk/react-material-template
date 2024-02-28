@@ -1,31 +1,15 @@
-// import { combineReducers, applyMiddleware, createStore } from 'redux'
-import { configureStore } from '@reduxjs/toolkit'
-import loggerMiddleware from './middlewares/logger'
+// third-party
+import { configureStore } from '@reduxjs/toolkit';
 
-import userStore, { userOtherActions } from './modules/userStore'
-import cartStore from './modules/cartStore'
-import mainStore from './modules/mainStore'
+// project import
+import reducers from './reducers';
+
+// ==============================|| REDUX TOOLKIT - MAIN STORE ||============================== //
 
 const store = configureStore({
-  reducer: {
-    user: userStore.reducer,
-    cart: cartStore.reducer,
-    main: mainStore.reducer,
-  },
-  middleware(getDefaultMiddleware) {
-    return [loggerMiddleware, ...getDefaultMiddleware()]
-  },
-})
+  reducer: reducers
+});
 
-const actionCreators = {
-  ...userStore.actions,
-  ...userOtherActions,
-  ...cartStore.actions,
-  ...mainStore.actions,
-}
+const { dispatch } = store;
 
-export type RootState = ReturnType<typeof store.getState>
-
-export { userStore, cartStore, actionCreators, mainStore }
-
-export default store
+export { store, dispatch };
