@@ -1,0 +1,58 @@
+@use 'sass:map';
+@import '@/styles/base/index';
+
+@mixin toastStyle($type: success) {
+  $bgColorMap: (
+    success: $successBgColor,
+    warn: $warnBgColor,
+    error: $errorBgColor,
+  );
+  $borderColorMap: (
+    success: $successBorderColor,
+    warn: $warnBorderColor,
+    error: $errorBorderColor,
+  );
+  $bgColor: map.get($bgColorMap, $type);
+  $borderColor: map.get($borderColorMap, $type);
+
+  .toast-#{$type} {
+    .toast-con {
+      background: alphacolor($bgColor);
+      border: 1px solid alphacolor($borderColor);
+
+      // box-shadow: 0 0 2px 1px #ffffff inset;
+    }
+  }
+}
+
+.toast {
+  @include fullScreen;
+
+  z-index: 999;
+  pointer-events: none;
+
+  .toast-con {
+    @include centerByPosition(true, false);
+
+    // background: rgba(0, 0, 0, 0.6);
+
+    top: 0;
+
+    // top: rem(20);
+    max-width: 50%;
+    padding: rem(5) rem(15);
+
+    // color: black;
+    color: white;
+    border-radius: rem(3);
+    transition: top ease-in-out 0.2s;
+
+    &.enter {
+      top: rem(20);
+    }
+  }
+}
+
+@include toastStyle(success);
+@include toastStyle(warn);
+@include toastStyle(error);

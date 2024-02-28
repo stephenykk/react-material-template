@@ -1,0 +1,15 @@
+@use 'sass:color';
+
+$themeColor: #942ffb;
+$inputBorderColor: #6e726f;
+$bgLightenVal: 3%;
+$brdLightenVal: 1%;
+$successColor: #27e164;
+$successBgColor: color.adjust($successColor, $lightness: $bgLightenVal);
+$successBorderColor: color.adjust($successColor, $lightness: $brdLightenVal);
+$warnColor: #e8960a;
+$warnBgColor: color.adjust($warnColor, $lightness: $bgLightenVal);
+$warnBorderColor: color.adjust($warnColor, $lightness: $brdLightenVal);
+$errorColor: #e12a27;
+$errorBgColor: color.adjust($errorColor, $lightness: $bgLightenVal);
+$errorBorderColor: color.adjust($errorColor, $lightness: $brdLightenVal);

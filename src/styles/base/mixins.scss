@@ -1,0 +1,43 @@
+@mixin flex($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin fullScreen($pos: absolute) {
+  position: $pos;
+  inset: 0;
+}
+
+@mixin square($size) {
+  width: rem($size);
+  height: rem($size);
+}
+
+@mixin maxLines($n: 1) {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $n;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+@mixin centerByPosition($isHorizontal: true, $isVertical: true) {
+  position: absolute;
+
+  $offsetX: 0;
+  $offsetY: 0;
+
+  @if $isHorizontal {
+    $offsetX: -50%;
+
+    left: 50%;
+  }
+
+  @if $isVertical {
+    $offsetY: -50%;
+
+    top: 50%;
+  }
+
+  transform: translate($offsetX, $offsetY);
+}

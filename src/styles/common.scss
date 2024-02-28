@@ -1,0 +1,62 @@
+@import './base/index';
+
+:root {
+  font-weight: 400;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: white;
+}
+
+a {
+  color: #646cff;
+  font-weight: 500;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+#root {
+  // max-width: 1280px;
+  // margin: 0 auto;
+  min-height: 100vh;
+}
+
+.flex-row {
+  @include flex(row);
+}
+
+.center-both {
+  @include centerByPosition;
+}
+
+.loading-wrapper {
+  $width: 60;
+
+  @include centerByPosition;
+  @include square($width);
+
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+  padding: rem(5);
+  line-height: rem($width);
+
+  // background: rgb(0 0 0 / 20%);
+  border-radius: rem(4);
+}
