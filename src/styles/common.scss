@@ -1,33 +1,5 @@
 @import './base/index';
-
-:root {
-  font-weight: 400;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-synthesis: none;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-size-adjust: 100%;
-}
-
-body {
-  min-width: 320px;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  background: white;
-}
-
-a {
-  color: #646cff;
-  font-weight: 500;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
+@import './reset';
 
 #root {
   // max-width: 1280px;
@@ -35,8 +7,24 @@ a:hover {
   min-height: 100vh;
 }
 
+::selection {
+  color: white;
+  background: $themeColor;
+}
+
+@include padding;
+@include margin;
+@include marginPercent;
+@include fontSize;
+@include textAlign;
+@include color;
+
 .flex-row {
   @include flex(row);
+}
+
+.flex1 {
+  flex: 1;
 }
 
 .center-both {
@@ -59,4 +47,99 @@ a:hover {
 
   // background: rgb(0 0 0 / 20%);
   border-radius: rem(4);
+}
+
+.hide {
+  display: none !important;
+}
+
+/* 
+button {
+  font-size: 18px;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #eee;
+
+  &:hover {
+    background: #ddd;
+  }
+} */
+
+input {
+  margin: 0 5px;
+  padding: 0 5px;
+  font-size: 15px;
+  line-height: 2;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  outline: none;
+
+  &:focus {
+    border-color: darkgoldenrod;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.ant-input-prefix {
+  color: #ccc;
+}
+
+.page {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  .page-main {
+    margin-top: 10%;
+  }
+}
+
+h1 {
+  margin: 0;
+  font-weight: normal;
+  font-size: 30px;
+  text-align: center;
+}
+
+.app,
+.app-layout {
+  // min-width: 1000px;
+  min-height: 100vh;
+
+  .ant-form label {
+    align-items: center;
+  }
+}
+
+.app-main-wrap {
+  display: flex;
+  flex: 0;
+  flex-direction: column;
+  padding: 0 50px;
+}
+
+.page .page-main {
+  .main-card {
+    // width: 800px;
+    width: 500px;
+  }
+}
+
+@media only screen and (width <=600px) {
+  .app-main-wrap {
+    padding: 0;
+  }
+
+  .ant-layout-footer {
+    padding: 20px;
+  }
+
+  .page .page-main {
+    margin-top: 0;
+  }
 }

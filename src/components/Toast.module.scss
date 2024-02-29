@@ -7,28 +7,28 @@
     warn: $warnBgColor,
     error: $errorBgColor,
   );
-  $borderColorMap: (
-    success: $successBorderColor,
-    warn: $warnBorderColor,
-    error: $errorBorderColor,
-  );
-  $bgColor: map.get($bgColorMap, $type);
-  $borderColor: map.get($borderColorMap, $type);
+$borderColorMap: (
+  success: $successBorderColor,
+  warn: $warnBorderColor,
+  error: $errorBorderColor,
+);
+$bgColor: map.get($bgColorMap, $type);
+$borderColor: map.get($borderColorMap, $type);
 
-  .toast-#{$type} {
-    .toast-con {
-      background: alphacolor($bgColor);
-      border: 1px solid alphacolor($borderColor);
+.toast-#{$type} {
+  .toast-con {
+    background: alphacolor($bgColor);
+    border: 1px solid alphacolor($borderColor);
 
-      // box-shadow: 0 0 2px 1px #ffffff inset;
-    }
+    // box-shadow: 0 0 2px 1px #ffffff inset;
   }
+}
 }
 
 .toast {
   @include fullScreen;
 
-  z-index: 999;
+  z-index: 9999;
   pointer-events: none;
 
   .toast-con {

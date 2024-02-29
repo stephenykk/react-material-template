@@ -1,3 +1,5 @@
+@import './base/index';
+
 #icon-loading {
   width: 42px;
   height: 42px;
@@ -36,4 +38,37 @@
     stroke-dasharray: 90, 150;
     stroke-dashoffset: -120px;
   }
+}
+
+.icon-wrap {
+  $size: 20;
+
+  position: relative;
+  top: -1px;
+  display: inline-block;
+
+  // overflow: hidden;
+  margin: 5px;
+  vertical-align: middle;
+  background: white;
+  border-radius: 50%;
+
+  @include square($size - 4);
+
+  .icon {
+    @include centerByPosition;
+    @include square($size);
+  }
+}
+
+.icon-success {
+  fill: #40c135;
+}
+
+.icon-warn {
+  fill: #497ef1;
+}
+
+.icon-error {
+  fill: #db2069;
 }

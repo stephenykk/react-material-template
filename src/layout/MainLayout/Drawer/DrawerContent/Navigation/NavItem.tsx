@@ -15,11 +15,12 @@ import {
 } from '@mui/material'
 
 // project import
-import { activeItem } from '@/store/reducers/menu'
+import { useActions } from '@/hooks'
 
 // ==============================|| NAVIGATION - LIST ITEM ||============================== //
 
 const NavItem = ({ item, level }) => {
+  const { activeItem } = useActions()
   const theme = useTheme()
   const dispatch = useDispatch()
   const { pathname } = useLocation()

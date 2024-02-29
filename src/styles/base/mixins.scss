@@ -1,3 +1,5 @@
+@import './vars';
+
 @mixin flex($direction: row) {
   display: flex;
   flex-direction: $direction;
@@ -21,8 +23,12 @@
   word-break: break-word;
 }
 
-@mixin centerByPosition($isHorizontal: true, $isVertical: true) {
-  position: absolute;
+@mixin centerByPosition(
+  $isHorizontal: true,
+  $isVertical: true,
+  $position: absolute
+) {
+  position: $position;
 
   $offsetX: 0;
   $offsetY: 0;
@@ -40,4 +46,93 @@
   }
 
   transform: translate($offsetX, $offsetY);
+}
+
+$dirs: (
+  left: l,
+  right: r,
+  top: t,
+  bottom: b,
+);
+
+@mixin padding($start: 5, $end: 40, $step: 5) {
+  @each $dir, $d in $dirs {
+    $n: $start;
+
+    @while $n <=$end {
+      .p#{$d}#{$n} {
+        padding-#{$dir}: $n * 1px;
+      }
+
+      $n: $n + $step;
+    }
+  }
+}
+
+@mixin margin($start: 5, $end: 40, $step: 5) {
+  @each $dir, $d in $dirs {
+    $n: $start;
+
+    @while $n <=$end {
+      .m#{$d}#{$n} {
+        margin-#{$dir}: $n * 1px;
+      }
+
+      $n: $n + $step;
+    }
+  }
+}
+
+@mixin marginPercent($start: 5, $end: 40, $step: 5) {
+  @each $dir, $d in $dirs {
+    $n: $start;
+
+    @while $n <=$end {
+      .m#{$d}#{$n}p {
+        margin-#{$dir}: $n * 1%;
+      }
+
+      $n: $n + $step;
+    }
+  }
+}
+
+$Hdirs: (
+  left: l,
+  right: r,
+  center: c,
+);
+
+@mixin textAlign() {
+  @each $dir, $d in $Hdirs {
+    .ta-#{$d} {
+      text-align: $dir;
+    }
+  }
+}
+
+@mixin fontSize() {
+  $n: 12;
+
+  @while $n <=30 {
+    .fs#{$n} {
+      font-size: $n * 1px;
+
+      $n: $n + 2;
+    }
+  }
+}
+
+@mixin color() {
+  .gray {
+    color: #999;
+  }
+
+  .red {
+    color: red;
+  }
+
+  .theme-color {
+    color: $themeColor;
+  }
 }

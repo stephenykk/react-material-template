@@ -12,12 +12,12 @@ import Header from './Header'
 import navigation from '@/menu-items'
 import Breadcrumbs from '@/components/@extended/Breadcrumbs'
 
-// types
-import { openDrawer } from '@/store/reducers/menu'
+import { useActions } from '@/hooks'
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
 const MainLayout = () => {
+  const { openDrawer } = useActions()
   const theme = useTheme()
   const matchDownLG = useMediaQuery(theme.breakpoints.down('lg'))
   const dispatch = useDispatch()

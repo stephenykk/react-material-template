@@ -8,12 +8,13 @@ import { useDispatch, useSelector } from 'react-redux'
 // project import
 import Logo from './Logo'
 import config from '@/config'
-import { activeItem } from '@/store/reducers/menu'
+import { useActions } from '@/hooks'
 
 // ==============================|| MAIN LOGO ||============================== //
 
 const LogoSection = ({ sx, to }) => {
   const { defaultId } = useSelector((state) => state.menu)
+  const { activeItem } = useActions()
   const dispatch = useDispatch()
   return (
     <ButtonBase
