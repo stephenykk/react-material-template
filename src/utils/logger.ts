@@ -3,7 +3,7 @@ type Logger = {
   [key in LogLevel]: Fn<void>
 }
 
-const { DSZ_LOG_LEVEL: allowLevel = 'info', DEV: isDev } = import.meta.env
+const { NAIM_LOG_LEVEL: allowLevel = 'info', DEV: isDev } = import.meta.env
 
 export function createLogger(prefix = 'msg') {
   const logLevels: Array<LogLevel> = ['info', 'warn', 'error']

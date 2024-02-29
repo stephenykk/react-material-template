@@ -7,12 +7,14 @@
 -   TS
 -   React-router
 -   Redux
+-   @mui/material
+-   react-apexchart
 
 ## features
 
--   lint staged codes ensure quality
+-   lint and prettier staged codes ensure quality
+-   lint commit message
 -   config `axios` interceptors
--   some utils functions and components ( toast / loading / logger )
 -   svg-sprite and custom icon component `SvgIcon`
 
 ## develop
