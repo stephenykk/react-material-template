@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { useTheme } from '@mui/material/styles'
 import { Box } from '@mui/material'
 
-const Dot = ({ color, size }) => {
+const Dot = ({ color, size }: Partial<DotProps>) => {
   const theme = useTheme()
   let main
   switch (color) {
@@ -40,9 +40,9 @@ const Dot = ({ color, size }) => {
   )
 }
 
-Dot.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.number,
+type DotProps = {
+  color: string
+  size: number
 }
 
 export default Dot

@@ -13,7 +13,7 @@ import { drawerWidth } from '@/config'
 
 // ==============================|| MAIN LAYOUT - DRAWER ||============================== //
 
-const MainDrawer = ({ open, handleDrawerToggle, window }) => {
+const MainDrawer = ({ open, handleDrawerToggle, window }: MainDrawerProps) => {
   const theme = useTheme()
   const matchDownMD = useMediaQuery(theme.breakpoints.down('lg'))
 
@@ -62,10 +62,10 @@ const MainDrawer = ({ open, handleDrawerToggle, window }) => {
   )
 }
 
-MainDrawer.propTypes = {
-  open: PropTypes.bool,
-  handleDrawerToggle: PropTypes.func,
-  window: PropTypes.object,
+type MainDrawerProps = {
+  open: boolean
+  handleDrawerToggle: Fn
+  window: Fn
 }
 
 export default MainDrawer

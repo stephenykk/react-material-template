@@ -33,7 +33,7 @@ const closedMixin = (theme: Theme) => ({
 
 const MiniDrawerStyled = styled(Drawer, {
   shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }: { theme: Theme; open: any }) => ({
+})(({ theme, open }: { theme: Theme; open?: any }) => ({
   width: drawerWidth,
   flexShrink: 0,
   whiteSpace: 'nowrap',

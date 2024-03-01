@@ -5,10 +5,11 @@ import { Box } from '@mui/material'
 
 // project import
 import MainCard from '@/components/MainCard'
+import { ReactNode } from 'react'
 
 // ==============================|| AUTHENTICATION - CARD WRAPPER ||============================== //
 
-const AuthCard = ({ children, ...other }) => (
+const AuthCard = ({ children, ...other }: AuthCardProps) => (
   <MainCard
     sx={{
       maxWidth: { xs: 400, lg: 475 },
@@ -27,8 +28,8 @@ const AuthCard = ({ children, ...other }) => (
   </MainCard>
 )
 
-AuthCard.propTypes = {
-  children: PropTypes.node,
+type AuthCardProps = {
+  children: ReactNode[] | ReactNode
 }
 
 export default AuthCard

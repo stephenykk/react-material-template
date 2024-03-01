@@ -8,6 +8,7 @@ import MainCard from '@/components/MainCard'
 
 // assets
 import { RiseOutlined, FallOutlined } from '@ant-design/icons'
+import { ReactNode } from 'react'
 
 // ==============================|| STATISTICS - ECOMMERCE CARD  ||============================== //
 
@@ -18,7 +19,7 @@ const AnalyticEcommerce = ({
   percentage,
   isLoss,
   extra,
-}) => (
+}: AnalyticEcommerceProps) => (
   <MainCard contentSX={{ p: 2.25 }}>
     <Stack spacing={0.5}>
       <Typography variant="h6" color="textSecondary">
@@ -73,13 +74,13 @@ const AnalyticEcommerce = ({
   </MainCard>
 )
 
-AnalyticEcommerce.propTypes = {
-  color: PropTypes.string,
-  title: PropTypes.string,
-  count: PropTypes.string,
-  percentage: PropTypes.number,
-  isLoss: PropTypes.bool,
-  extra: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+type AnalyticEcommerceProps = {
+  color?: any
+  title?: string
+  count?: string
+  percentage?: number
+  isLoss?: boolean
+  extra?: ReactNode | string
 }
 
 AnalyticEcommerce.defaultProps = {

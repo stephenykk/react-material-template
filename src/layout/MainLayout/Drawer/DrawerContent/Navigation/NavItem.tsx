@@ -15,25 +15,25 @@ import {
 } from '@mui/material'
 
 // project import
-import { useActions } from '@/hooks'
-
+import { useActions, useGlobalState } from '@/hooks'
+import type { MenuItemType } from '@/menu-items'
 // ==============================|| NAVIGATION - LIST ITEM ||============================== //
 
-const NavItem = ({ item, level }) => {
+const NavItem = ({ item, level }: { item: MenuItemType; level: number }) => {
   const { activeItem } = useActions()
   const theme = useTheme()
   const dispatch = useDispatch()
   const { pathname } = useLocation()
 
-  const { drawerOpen, openItem } = useSelector((state) => state.menu)
+  const { drawerOpen, openItem } = useGlobalState('menu')
 
   let itemTarget = '_self'
   if (item.target) {
     itemTarget = '_blank'
   }
 
-  let listItemProps = {
-    component: forwardRef((props, ref) => (
+  let listItemProps: { component: any; href?: string; target?: string } = {
+    component: forwardRef<HTMLAnchorElement, Obj>((props, ref) => (
       <Link ref={ref} {...props} to={item.url} target={itemTarget} />
     )),
   }
@@ -41,12 +41,12 @@ const NavItem = ({ item, level }) => {
     listItemProps = { component: 'a', href: item.url, target: itemTarget }
   }
 
-  const itemHandler = (id) => {
+  const itemHandler = (id: string) => {
     dispatch(activeItem({ openItem: [id] }))
   }
 
   const Icon = item.icon
-  const itemIcon = item.icon ? (
+  const itemIcon = Icon ? (
     <Icon style={{ fontSize: drawerOpen ? '1rem' : '1.25rem' }} />
   ) : (
     false
@@ -151,11 +151,6 @@ const NavItem = ({ item, level }) => {
       )}
     </ListItemButton>
   )
-}
-
-NavItem.propTypes = {
-  item: PropTypes.object,
-  level: PropTypes.number,
 }
 
 export default NavItem

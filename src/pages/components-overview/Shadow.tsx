@@ -10,7 +10,7 @@ import ComponentSkeleton from './ComponentSkeleton'
 
 // ===============================|| SHADOW BOX ||=============================== //
 
-function ShadowBox({ shadow }) {
+function ShadowBox({ shadow }: ShadowBoxProps) {
   return (
     <MainCard border={false} sx={{ boxShadow: shadow }}>
       <Stack spacing={1} justifyContent="center" alignItems="center">
@@ -21,13 +21,18 @@ function ShadowBox({ shadow }) {
   )
 }
 
-ShadowBox.propTypes = {
-  shadow: PropTypes.string.isRequired,
+type ShadowBoxProps = {
+  shadow: string
 }
 
 // ===============================|| CUSTOM - SHADOW BOX ||=============================== //
 
-function CustomShadowBox({ shadow, label, color, bgcolor }) {
+function CustomShadowBox({
+  shadow,
+  label,
+  color,
+  bgcolor,
+}: CustomShadowBoxProps) {
   return (
     <MainCard
       border={false}
@@ -42,11 +47,11 @@ function CustomShadowBox({ shadow, label, color, bgcolor }) {
   )
 }
 
-CustomShadowBox.propTypes = {
-  shadow: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  bgcolor: PropTypes.string,
+type CustomShadowBoxProps = {
+  shadow: string
+  color: string
+  label: string
+  bgcolor?: string
 }
 
 // ============================|| COMPONENT - SHADOW ||============================ //

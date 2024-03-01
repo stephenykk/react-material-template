@@ -6,6 +6,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import {
   Box,
   Link,
+  SortDirection,
   Stack,
   Table,
   TableBody,
@@ -22,7 +23,13 @@ import { NumericFormat } from 'react-number-format'
 // project import
 import Dot from '@/components/@extended/Dot'
 
-function createData(trackingNo, name, fat, carbs, protein) {
+function createData(
+  trackingNo: number,
+  name: string,
+  fat: number,
+  carbs: number,
+  protein: number,
+) {
   return { trackingNo, name, fat, carbs, protein }
 }
 
@@ -39,7 +46,7 @@ const rows = [
   createData(98753291, 'Chair', 100, 0, 14001),
 ]
 
-function descendingComparator(a, b, orderBy) {
+function descendingComparator(a: Obj, b: Obj, orderBy: string) {
   if (b[orderBy] < a[orderBy]) {
     return -1
   }
@@ -49,13 +56,13 @@ function descendingComparator(a, b, orderBy) {
   return 0
 }
 
-function getComparator(order, orderBy) {
+function getComparator(order: SortDirection, orderBy: string) {
   return order === 'desc'
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy)
+    ? (a: Obj, b: Obj) => descendingComparator(a, b, orderBy)
+    : (a: Obj, b: Obj) => -descendingComparator(a, b, orderBy)
 }
 
-function stableSort(array, comparator) {
+function stableSort(array: Array<any>, comparator: Fn) {
   const stabilizedThis = array.map((el, index) => [el, index])
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0])
@@ -72,32 +79,32 @@ function stableSort(array, comparator) {
 const headCells = [
   {
     id: 'trackingNo',
-    align: 'left',
+    align: 'left' as const,
     disablePadding: false,
     label: 'Tracking No.',
   },
   {
     id: 'name',
-    align: 'left',
+    align: 'left' as const,
     disablePadding: true,
     label: 'Product Name',
   },
   {
     id: 'fat',
-    align: 'right',
+    align: 'right' as const,
     disablePadding: false,
     label: 'Total Order',
   },
   {
     id: 'carbs',
-    align: 'left',
+    align: 'left' as const,
     disablePadding: false,
 
     label: 'Status',
   },
   {
     id: 'protein',
-    align: 'right',
+    align: 'right' as const,
     disablePadding: false,
     label: 'Total Amount',
   },
@@ -105,7 +112,13 @@ const headCells = [
 
 // ==============================|| ORDER TABLE - HEADER ||============================== //
 
-function OrderTableHead({ order, orderBy }) {
+function OrderTableHead({
+  order,
+  orderBy,
+}: {
+  order: SortDirection
+  orderBy: string
+}) {
   return (
     <TableHead>
       <TableRow>
@@ -124,14 +137,9 @@ function OrderTableHead({ order, orderBy }) {
   )
 }
 
-OrderTableHead.propTypes = {
-  order: PropTypes.string,
-  orderBy: PropTypes.string,
-}
-
 // ==============================|| ORDER TABLE - STATUS ||============================== //
 
-const OrderStatus = ({ status }) => {
+const OrderStatus = ({ status }: { status: number }) => {
   let color
   let title
 
@@ -161,18 +169,14 @@ const OrderStatus = ({ status }) => {
   )
 }
 
-OrderStatus.propTypes = {
-  status: PropTypes.number,
-}
-
 // ==============================|| ORDER TABLE ||============================== //
 
 export default function OrderTable() {
-  const [order] = useState('asc')
+  const [order] = useState<SortDirection>('asc')
   const [orderBy] = useState('trackingNo')
-  const [selected] = useState([])
+  const [selected] = useState<Array<any>>([])
 
-  const isSelected = (trackingNo) => selected.indexOf(trackingNo) !== -1
+  const isSelected = (trackingNo: any) => selected.indexOf(trackingNo) !== -1
 
   return (
     <Box>

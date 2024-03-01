@@ -12,7 +12,7 @@ import Header from './Header'
 import navigation from '@/menu-items'
 import Breadcrumbs from '@/components/@extended/Breadcrumbs'
 
-import { useActions } from '@/hooks'
+import { useActions, useGlobalState } from '@/hooks'
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
@@ -21,8 +21,7 @@ const MainLayout = () => {
   const theme = useTheme()
   const matchDownLG = useMediaQuery(theme.breakpoints.down('lg'))
   const dispatch = useDispatch()
-
-  const { drawerOpen } = useSelector((state) => state.menu)
+  const { drawerOpen } = useGlobalState('menu')
 
   // drawer toggler
   const [open, setOpen] = useState(drawerOpen)

@@ -10,10 +10,11 @@ import AuthFooter from '@/components/cards/AuthFooter'
 
 // assets
 import AuthBackground from '@/assets/images/auth/AuthBackground'
+import { ReactNode } from 'react'
 
 // ==============================|| AUTHENTICATION - WRAPPER ||============================== //
 
-const AuthWrapper = ({ children }) => (
+const AuthWrapper = ({ children }: AuthWrapperProps) => (
   <Box sx={{ minHeight: '100vh' }}>
     <AuthBackground />
     <Grid
@@ -50,8 +51,8 @@ const AuthWrapper = ({ children }) => (
   </Box>
 )
 
-AuthWrapper.propTypes = {
-  children: PropTypes.node,
+type AuthWrapperProps = {
+  children: ReactNode[] | ReactNode
 }
 
 export default AuthWrapper

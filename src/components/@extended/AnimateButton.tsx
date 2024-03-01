@@ -1,11 +1,15 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 // third-party
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
+import { ReactNode } from 'react'
 
 // ==============================|| ANIMATION BUTTON ||============================== //
 
-export default function AnimateButton({ children, type }) {
+export default function AnimateButton({
+  children,
+  type = 'scale',
+}: Partial<AnimateButtonProps>) {
   switch (type) {
     case 'rotate': // only available in paid version
     case 'slide': // only available in paid version
@@ -15,15 +19,11 @@ export default function AnimateButton({ children, type }) {
         <motion.div whileHover={{ scale: 1 }} whileTap={{ scale: 0.9 }}>
           {children}
         </motion.div>
-      );
+      )
   }
 }
 
-AnimateButton.propTypes = {
-  children: PropTypes.node,
-  type: PropTypes.oneOf(['slide', 'scale', 'rotate'])
-};
-
-AnimateButton.defaultProps = {
-  type: 'scale'
-};
+type AnimateButtonProps = {
+  children: ReactNode
+  type: 'slide' | 'scale' | 'rotate'
+}

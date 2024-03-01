@@ -56,14 +56,14 @@ const Notification = () => {
   const theme = useTheme()
   const matchesXs = useMediaQuery(theme.breakpoints.down('md'))
 
-  const anchorRef = useRef(null)
+  const anchorRef = useRef<HTMLAnchorElement>(null)
   const [open, setOpen] = useState(false)
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen)
   }
 
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+  const handleClose = (event: MouseEvent | TouchEvent) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target as Node)) {
       return
     }
     setOpen(false)
@@ -81,6 +81,7 @@ const Notification = () => {
           color: 'text.primary',
           bgcolor: open ? iconBackColorOpen : iconBackColor,
         }}
+        href=""
         aria-label="open profile"
         ref={anchorRef}
         aria-controls={open ? 'profile-grow' : undefined}

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { useEffect, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
 // material-ui
 import { Grid, Skeleton, Stack } from '@mui/material'
@@ -9,7 +9,7 @@ import MainCard from '@/components/MainCard'
 
 // ===============================|| COMPONENT - SKELETON ||=============================== //
 
-const ComponentSkeleton = ({ children }) => {
+const ComponentSkeleton = ({ children }: ComponentSkeletonProps) => {
   const [isLoading, setLoading] = useState(true)
   useEffect(() => {
     setLoading(false)
@@ -54,8 +54,8 @@ const ComponentSkeleton = ({ children }) => {
   )
 }
 
-ComponentSkeleton.propTypes = {
-  children: PropTypes.node,
+type ComponentSkeletonProps = {
+  children: ReactNode[] | ReactNode
 }
 
 export default ComponentSkeleton

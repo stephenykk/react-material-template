@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { useRef, useState } from 'react'
+import { useRef, useState, ReactNode, SyntheticEvent } from 'react'
 
 // material-ui
 import { useTheme } from '@mui/material/styles'
@@ -34,7 +34,7 @@ import {
 } from '@ant-design/icons'
 
 // tab panel wrapper
-function TabPanel({ children, value, index, ...other }) {
+function TabPanel({ children, value, index, ...other }: TabPanelProps) {
   return (
     <div
       role="tabpanel"
@@ -48,13 +48,14 @@ function TabPanel({ children, value, index, ...other }) {
   )
 }
 
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
+type TabPanelProps = {
+  children?: ReactNode[] | ReactNode
+  index: any
+  value: any
+  [key: string]: any
 }
 
-function a11yProps(index) {
+function a11yProps(index: number) {
   return {
     id: `profile-tab-${index}`,
     'aria-controls': `profile-tabpanel-${index}`,
@@ -65,19 +66,21 @@ function a11yProps(index) {
 
 const Profile = () => {
   const theme = useTheme()
-
   const handleLogout = async () => {
     // logout
   }
 
-  const anchorRef = useRef(null)
+  const anchorRef = useRef<HTMLAnchorElement>(null)
   const [open, setOpen] = useState(false)
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen)
   }
 
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+  const handleClose = (event: Event) => {
+    if (
+      anchorRef.current &&
+      anchorRef.current.contains(event.target as unknown as Node)
+    ) {
       return
     }
     setOpen(false)
@@ -85,7 +88,10 @@ const Profile = () => {
 
   const [value, setValue] = useState(0)
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (
+    event: SyntheticEvent<Element, Event>,
+    newValue: any,
+  ) => {
     setValue(newValue)
   }
 
@@ -101,6 +107,7 @@ const Profile = () => {
           '&:hover': { bgcolor: 'secondary.lighter' },
         }}
         aria-label="open profile"
+        href=""
         ref={anchorRef}
         aria-controls={open ? 'profile-grow' : undefined}
         aria-haspopup="true"
@@ -134,6 +141,7 @@ const Profile = () => {
         }}
       >
         {({ TransitionProps }) => (
+          // @ts-ignore
           <Transitions type="fade" in={open} {...TransitionProps}>
             {open && (
               <Paper

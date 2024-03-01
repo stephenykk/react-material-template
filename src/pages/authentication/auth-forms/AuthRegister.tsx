@@ -33,17 +33,17 @@ import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
 // ============================|| FIREBASE - REGISTER ||============================ //
 
 const AuthRegister = () => {
-  const [level, setLevel] = useState()
+  const [level, setLevel] = useState<any>()
   const [showPassword, setShowPassword] = useState(false)
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword)
   }
 
-  const handleMouseDownPassword = (event) => {
+  const handleMouseDownPassword = (event: React.MouseEvent) => {
     event.preventDefault()
   }
 
-  const changePassword = (value) => {
+  const changePassword = (value: string) => {
     const temp = strengthIndicator(value)
     setLevel(strengthColor(temp))
   }

@@ -10,7 +10,7 @@ import Logo from '@/components/Logo'
 
 // ==============================|| DRAWER HEADER ||============================== //
 
-const DrawerHeader = ({ open }) => {
+const DrawerHeader = ({ open }: DrawerHeaderProps) => {
   const theme = useTheme()
 
   return (
@@ -35,8 +35,8 @@ const DrawerHeader = ({ open }) => {
   )
 }
 
-DrawerHeader.propTypes = {
-  open: PropTypes.bool,
+type DrawerHeaderProps = {
+  open: boolean
 }
 
 export default DrawerHeader

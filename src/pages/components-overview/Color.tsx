@@ -9,7 +9,7 @@ import ComponentSkeleton from './ComponentSkeleton'
 
 // ===============================|| COLOR BOX ||=============================== //
 
-function ColorBox({ bgcolor, title, data, dark, main }) {
+function ColorBox({ bgcolor, title, data, dark, main }: ColorBoxProps) {
   return (
     <>
       <Card sx={{ '&.MuiPaper-root': { borderRadius: '0px' } }}>
@@ -47,12 +47,12 @@ function ColorBox({ bgcolor, title, data, dark, main }) {
   )
 }
 
-ColorBox.propTypes = {
-  bgcolor: PropTypes.string,
-  title: PropTypes.string,
-  data: PropTypes.object.isRequired,
-  dark: PropTypes.bool,
-  main: PropTypes.bool,
+type ColorBoxProps = {
+  bgcolor?: string
+  title?: string
+  data: Obj
+  dark?: boolean
+  main?: boolean
 }
 
 // ===============================|| COMPONENT - COLOR ||=============================== //

@@ -23,7 +23,3 @@ export default function SyntaxHighlight({
     </SyntaxHighlighter>
   )
 }
-
-SyntaxHighlight.propTypes = {
-  children: PropTypes.node,
-}

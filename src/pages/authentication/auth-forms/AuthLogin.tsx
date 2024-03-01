@@ -39,7 +39,7 @@ const AuthLogin = () => {
     setShowPassword(!showPassword)
   }
 
-  const handleMouseDownPassword = (event) => {
+  const handleMouseDownPassword = (event: React.MouseEvent) => {
     event.preventDefault()
   }
 

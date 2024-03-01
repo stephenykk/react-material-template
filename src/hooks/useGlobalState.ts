@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import type { RootState } from '@/store'
 
-type ModuleName = 'main' | 'user' | 'cart'
+type ModuleName = 'main' | 'user' | 'cart' | 'menu'
 
 export function useGlobalState<T extends ModuleName>(
   moduleName: T,
